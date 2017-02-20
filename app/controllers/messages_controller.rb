@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :move_to_index, only: %i( index create )
+  # before_action :authenticate_user!
+  # before_action :move_to_index, only: %i( index create )
   before_action :set_group, only: %i( index create )
 
   def index
