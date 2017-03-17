@@ -1,11 +1,9 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :move_to_index, only: %i( index create )
   before_action :set_group, only: %i( index create )
 
   def index
     @groups = current_user.groups.desc
-    @messages = @group.messages
+    @messages = @group.messages.asc
     @message = Message.new
   end
 
@@ -26,11 +24,6 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
-  end
-
-  def move_to_index
-    group_ids = current_user.groups.pluck(:id)
-    redirect_to groups_path if group_ids.exclude?(params[:group_id].to_i)
   end
 
 end

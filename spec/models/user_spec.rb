@@ -39,7 +39,7 @@ describe User do
       expect(another_user.errors[:email]).to include("はすでに存在します。")
     end
 
-    it "i svalid with a password that has more than 8 characters" do
+    it "is svalid with a password that has more than 8 characters" do
       user = build(:user, password: "00000000", password_confirmation: "00000000")
       expect(user).to be_valid
     end
